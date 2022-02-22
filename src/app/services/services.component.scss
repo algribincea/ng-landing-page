@@ -1,0 +1,56 @@
+@import "./../../assets/scss/theme.scss";
+@import "./../../assets/scss/mixins.scss";
+
+section {
+    position: relative;
+    overflow: hidden;
+    padding: 70px 0;
+    @include mq(tablet-small, max) {
+        padding: 40px 0;
+    }
+}
+
+.container {
+    flex-direction: column;
+}
+
+
+
+.wrapper-tab {
+    max-width: 100%;
+    width: 100%;
+}
+
+.tab {
+
+    // &__content {
+    //     &--description {
+    //         margin-top: 30px;
+    //     }
+    // }
+}
+
+.services__parallax {
+    position: absolute;
+    left: -250px;
+    max-width: 100%;
+    object-fit: contain;
+    top: 900px;
+    z-index: -1;
+
+    @media (max-width: 1024px) {
+        display: none;
+    }
+}
+.rect__parallax {
+    position: absolute;
+    right: 50px;
+    max-width: 100%;
+    object-fit: contain;
+    top: -700px;
+    z-index: -1;
+
+    @media (max-width: 1024px) {
+        display: none;
+    }
+}

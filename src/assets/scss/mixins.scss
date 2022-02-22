@@ -1,0 +1,162 @@
+
+
+@mixin truncate($max-width) {
+    max-width: $max-width;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+$breakpoints: ("phone": 400px,
+    "phone-wide": 480px,
+    "phablet": 560px,
+    "tablet-small": 640px,
+    "tablet": 768px,
+    "tablet-m": 1000px,
+    "tablet-wide": 1024px,
+    "desktop": 1248px,
+    "desktop-wide": 1440px);
+
+@mixin mq($width, $type: min) {
+    @if map_has_key($breakpoints, $width) {
+        $width: map_get($breakpoints, $width);
+
+        @if $type==max {
+            $width: $width - 1px;
+        }
+
+        @media only screen and (#{$type}-width: $width) {
+            @content;
+        }
+    }
+}
+
+@function z($name) {
+    @if index($z-indexes, $name) {
+        @return (length($z-indexes) - index($z-indexes, $name))+1;
+    }
+
+    @else {
+        @warn 'There is no item "#{$name}" in this list; choose one of: #{$z-indexes}';
+        @return null;
+    }
+}
+
+$z-indexes: ("outdated-browser", "modal", "site-header", "page-wrapper", "site-footer");
+
+//----before after
+@mixin pseudo($display: block, $pos: absolute, $content: "") {
+    content: $content;
+    display: $display;
+    position: $pos;
+}
+
+@mixin flex-content($direction: false, $justify: false, $align: false, $align-content: false) {
+    display: flex;
+
+    @if $direction {
+        flex-direction: $direction;
+    }
+
+    @if $justify {
+        justify-content: $justify;
+    }
+
+    @if $align {
+        align-items: $align;
+    }
+
+    @if $align-content {
+        align-content: $align-content;
+    }
+}
+
+@mixin figure($width, $height: false) {
+    @include flex-content(row, center, center, center);
+    max-width: $width;
+    width: 100%;
+
+    @if $height {
+        height: $height;
+    }
+}
+
+
+//scalare font
+@function strip-unit($value) {
+    @return $value / ($value * 0 + 1);
+}
+
+@mixin fluid-type-size($min-font-size,
+    $max-font-size,
+    $ff: false,
+    $colour: false,
+    $align: false,
+    $lh: false,
+    $weight: false,
+    $min-vw: 320px,
+    $max-vw: 1200px) {
+    @if $ff {
+        font-family: $ff;
+    }
+
+    @if $colour {
+        color: $colour;
+    }
+
+    @if $weight {
+        font-weight: $weight;
+    }
+
+    @if $lh {
+        line-height: $lh;
+    }
+
+    @if $align {
+        text-align: $align;
+    }
+
+    $u1: unit($min-vw);
+    $u2: unit($max-vw);
+    $u3: unit($min-font-size);
+    $u4: unit($min-font-size);
+    // @if $min-font-size {
+    //   $u3: unit($min-font-size);
+    // }
+    // @if $max-font-size {
+    //   $u3: unit($max-font-size);
+    // }
+    // $u3: unit($min-font-size);
+    // $u4: unit($max-font-size);
+
+
+    @if $u1==$u2 and $u1==$u3 and $u1==$u4 {
+        & {
+            font-size: $min-font-size;
+
+            @media screen and (min-width: $min-vw) {
+                font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+            }
+
+            @media screen and (min-width: $max-vw) {
+                font-size: $max-font-size;
+            }
+        }
+    }
+
+}
+
+
+@mixin animation ($time) {
+    animation: fade $time both;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

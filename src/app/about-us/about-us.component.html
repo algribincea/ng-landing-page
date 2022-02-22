@@ -1,0 +1,16 @@
+<section *ngIf="about">
+    <div class="container">
+        <h2 class="title" language="about">Despre noi</h2>
+        <div class="wrapper">
+            <div class="about">
+                <h3 class="subtitle about__title">{{ about.title && about.title[_lng.langCurrent] }}</h3>
+                <div class="about__description" [innerHTML]="about.text && about.text[_lng.langCurrent]"></div>
+            </div>
+            <figure  class="about__img">
+                <img loading="lazy" [src]="about.image  && about.image.url && config.returnImg(about.image.url)" [alt]="about.image && about.image.alt && about.image.alt[_lng.langCurrent]" >
+                <!-- item.image && item.image && item.image.url && config.returnImg(item.image.url) -->
+            </figure>
+        </div>
+    </div>
+    <img loading="lazy" src="assets/images/Vacum.png" alt="" class="about__paralax" appParallax [ratio]="0.4">
+</section>

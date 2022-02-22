@@ -1,0 +1,13 @@
+<section class="container" *ngIf="partners">
+    <h2 class="title" language="partners">Parteneri</h2>
+    <div class="wrapper-cards">
+        <ng-container *ngFor="let item of partners">
+            <a *ngIf="item.image && item.image.url && item.url" [href]="item.url" target="_blank" class="card" rel="noopener">
+                <img loading="lazy"
+                    [src]="item.image && item.image.url && _config.returnImg(item.image.url)"
+                    [alt]="item.image && item.image.alt && item.image.alt[_lng.langCurrent]" class="card__img"
+                    rel="noopener"></a>
+        </ng-container>
+
+    </div>
+</section>

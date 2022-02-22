@@ -1,0 +1,75 @@
+@import "./../../assets/scss/theme.scss";
+@import "./../../assets/scss/mixins.scss";
+
+.container {
+    flex-direction: column;
+    padding: 70px 0 45px;
+    @include mq(tablet-small, max) {
+        padding: 40px 0 25px;
+    }
+}
+
+.wrapper-cards {
+    max-width: 100%;
+    width: 100%;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    grid-gap: 15px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: none;
+    align-items: stretch;
+    @include mq(desktop, max) {
+        grid-gap: 10px;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+    @media (max-width: 768px) {
+        grid-gap: 10px;
+        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    }
+    @media (max-width: 425px) {
+        grid-gap: 10px;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+    // @media (max-width: 380px) {
+    //   grid-gap: 5px;
+    //   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    // }
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        max-width: calc (1400px - 280px);
+    }
+}
+
+.card {
+    position: relative;
+    background-color: $light;
+    border-radius: $radius;
+    // :host ::ng-deep {
+    padding: 0px;
+    &__img {
+        @include figure(100%, 150px);
+        padding: 5px;
+        position: relative;
+    }
+
+    @include mq(tablet-wide, max) {
+        &__img {
+            height: auto;
+        }
+    }
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        max-width: 250px;
+        width: 100%;
+        padding: 5px;
+        box-sizing: border-box;
+    }
+    @include mq(tablet-wide, max) {
+        &__img {
+            height: 100px;
+        }
+    }
+}

@@ -1,0 +1,36 @@
+<section *ngIf="products">
+    <div class="product__content">
+        <h2 class="title" language="products">Produse</h2>
+        <ul class="tabs">
+            <li *ngFor="let item of products; let i = index" class="tabs__item"><a (click)="activeService = i"
+                    [ngClass]="{'active': activeService == i}">{{ item.title && item.title[_lng.langCurrent] }}</a>
+            </li>
+        </ul>
+        <ng-container *ngFor="let item of products; let i = index">
+            <div [ngSwitch]="activeService" class="wrapper-tab">
+                <div *ngSwitchCase="i" class="tab">
+
+                    <div class="tab__content">
+                        <div class="tab__content--description quil" *ngIf="item.text && item.text[_lng.langCurrent]"
+                            [innerHTML]="item.text && item.text[_lng.langCurrent]"></div>
+                        <a *ngIf="item.url" [href]="item.url" target="_blank" class="tab__content--url" rel="noopener"><span language="webSite">web site</span>  <i
+                                class="flaticon-next"></i></a>
+                        <a *ngIf="item.pdf && item.pdf[_lng.langCurrent] && item.pdf[_lng.langCurrent].url" [href]="_config.returnImg( item.pdf[_lng.langCurrent].url)" target="_blank" class="tab__content--url" rel="noopener">
+                            <span language="downloadPdf"></span> 
+                            <i class="flaticon-download"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+    </div>
+    <ng-container *ngFor="let item of products; let i = index">
+        <ng-container [ngSwitch]="activeService" >
+            <figure class="product__img"  *ngSwitchCase="i">
+                <img loading="lazy"  [src]="item.image && item.image.url && _config.returnImg(item.image.url)" [alt]="item.image && item.image.alt && item.image.alt[_lng.langCurrent]">
+            </figure>
+        </ng-container>
+        
+    </ng-container>
+</section>

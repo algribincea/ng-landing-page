@@ -1,0 +1,30 @@
+<section *ngIf="services">
+    <div class="container">
+        <h2 class="title" language="services">Servicii</h2>
+        <ul class="tabs">
+            <li class="tabs__item" *ngFor="let item of services; let i = index"><a (click)="activeService = i" [ngClass]="{'active': activeService == i}">{{ item.title &&  item.title[_lng.langCurrent] }}</a></li>
+            <!-- <li class="tabs__item"><a (click)="activeService = 2" [ngClass]="{'active': activeService == 2}">Distributie</a></li> -->
+        </ul>
+
+        <div [ngSwitch]="activeService" class="wrapper-tab">
+            <ng-container *ngFor="let item of services; let i = index">
+                <div *ngSwitchCase="i" class="tab">
+                    <figure class="tab__img"> 
+                        <img loading="lazy" [src]="item.image && item.image.url && _config.returnImg(item.image.url)" [alt]="item.image && item.image.alt && item.image.alt[_lng.langCurrent]">
+                    </figure>
+                    <div class="tab__content">
+                        <h3 class="subtitle tab__content--title">{{ item.title &&  item.title[_lng.langCurrent] }}</h3>
+                        <div class="tab__content--description" [innerHTML]="item.text &&  item.text[_lng.langCurrent]"></div>
+                    </div>
+                </div>
+            </ng-container>
+            
+            
+           
+        </div>
+    </div>
+    <img loading="lazy" src="assets/images/Servicii.png" alt="" class="services__parallax" appParallax [ratio]="0.1">
+    <img loading="lazy" src="assets/images/Patrat.png" alt="" class="rect__parallax"  appParallax [ratio]="0.2">
+</section>
+
+<!-- appParallax [ratio]="0.3" -->

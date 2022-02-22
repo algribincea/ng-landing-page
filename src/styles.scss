@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@import "assets/icons/flaticon.css";
+@import "assets/scss/fonts.scss";
+@import "assets/scss/normalize.scss";
+@import "assets/scss/theme.scss";
+@import "assets/scss/mixins.scss";
+@import "assets/scss/primary";
+
+.quil {
+    ul {
+
+        li {
+            list-style: disc;
+        }
+    }
+}

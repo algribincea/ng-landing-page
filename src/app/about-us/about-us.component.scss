@@ -1,0 +1,74 @@
+@import "./../../assets/scss/theme.scss";
+@import "./../../assets/scss/mixins.scss";
+section {
+    background-color: $medium;
+    background-attachment: fixed;
+    padding: 75px 0;
+    position: relative;
+    overflow: hidden;
+    @include mq(tablet-small, max) {
+        padding: 40px 0;
+    }
+}
+
+.container {
+    flex-direction: column;
+}
+
+.about {
+    margin-top: 45px;
+    max-width: 670px;
+    flex: 1 1 450px;
+    @include mq(tablet, max) {
+        max-width: 100%;
+    }
+    @include mq(tablet-small, max) {
+        margin-top: 20px;
+    }
+
+    &__description {
+        margin-top: 30px;
+        @include mq(tablet-small, max) {
+            margin-top: 15px;
+        }
+    }
+
+    &__img {
+        @include figure(650px, 570px);
+        flex: 1 1 400px;
+        img {
+            max-width: 100%;
+            object-fit: contain;
+        }
+        @include mq(desktop, max) {
+            height: auto;
+        }
+
+        @include mq(tablet, max) {
+            display: none;
+        }
+    }
+}
+
+.about__paralax {
+    position: absolute;
+    z-index: 1;
+    right: -20px;
+    top: 400px;
+    max-width: 100%;
+    object-fit: contain;
+    @media (max-width: 1024px) {
+        display: none;
+    }
+
+    
+}
+
+.wrapper {
+    max-width: 100%;
+    width: 100%;
+    justify-content: flex-start;
+    position: relative;
+    justify-content: space-between;
+    align-items: center;
+}

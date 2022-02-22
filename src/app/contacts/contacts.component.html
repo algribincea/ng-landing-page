@@ -1,0 +1,33 @@
+<section *ngIf="contacts">
+    <div class="container">
+        <h2 class="title" language="contacts">contacte</h2>
+        <div class="wrapper-contacts">
+            <div class="contacts" *ngFor="let item of contacts">
+                <h3 class="subtitle contacts__title"> {{ item.title[_lng.langCurrent] }} </h3>
+                <p class="contacts__description" [innerHTML]="item.text[_lng.langCurrent]"></p>
+                <ul class="contacts__info">
+                    <li class="contacts__info--item"><a href="tel: {{item.phone1}}" class="flaticon-call"
+                            *ngIf="item.phone1">{{
+                            item.phone1 }}</a></li>
+                    <li class="contacts__info--item"><a href="tel: {{item.phone2}}" class="flaticon-call"
+                            *ngIf="item.phone2">{{
+                            item.phone2 }}</a></li>
+
+                    <li class="contacts__info--item" *ngIf="item.email"><a href="mailto: {{item.email}}"
+                            class="flaticon-envelope">{{item.email}}</a></li>
+                    <li class="contacts__info--item" *ngIf="item.address"><address class="flaticon-placeholder"> {{
+                            item.address }} </address></li>
+                </ul>
+                <p class="contacts__person" *ngIf="item.person">{{ item.person && item.person.name }}</p>
+                <ul class="contacts__info" *ngIf="item.person">
+                    <li class="contacts__info--item"><a href="tel:{{ item.person && item.person.phone }}"
+                            *ngIf="item.person && item.person.phone" class="flaticon-call">{{ item.person &&
+                            item.person.phone }}</a></li>
+                    <li class="contacts__info--item"><a href="mailto: {{ item.person && item.person.email }}"
+                            *ngIf="item.person && item.person.email" class="flaticon-envelope">{{ item.person &&
+                            item.person.email }}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>

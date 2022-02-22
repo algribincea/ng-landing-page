@@ -1,0 +1,88 @@
+@import "./../../assets/scss/theme.scss";
+@import "./../../assets/scss/mixins.scss";
+
+section {
+    background-image: url(./../../assets/images/backround-img.png);
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 70px 0 50px;
+    @include mq(tablet-small, max) {
+        padding: 40px 0;
+    }
+}
+
+.container {
+    flex-direction: column;
+}
+
+.wrapper-counter {
+    margin-top: 45px;
+    max-width: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
+    grid-gap: 25px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: none;
+    align-items: stretch;
+    @media (max-width: 1440px) {
+        grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+    }
+    @include mq(desktop, max) {
+        
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+    @media (max-width: 1088px){
+        grid-template-columns: repeat(auto-fill, minmax(125px, 1fr));
+        grid-gap: 20px;
+    }
+    @include mq(tablet-wide, max) {
+        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    }
+    @include mq(tablet-small, max) {
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    }
+    // @media (max-width: 768px) {
+    //     grid-gap: 10px;
+    //     grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    // }
+    // @media (max-width: 425px) {
+    //     grid-gap: 10px;
+    //     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    // }
+    // @media (max-width: 380px) {
+    //   grid-gap: 5px;
+    //   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    // }
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        max-width: calc (1400px - 280px);
+    }
+}
+
+.counter {
+    position: relative;
+    
+    // :host ::ng-deep {
+    padding: 0px;
+    @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        max-width: 185px;
+        width: 100%;
+        padding: 5px;
+        box-sizing: border-box;
+    }
+
+    &__number {
+        justify-content: center;
+        @include fluid-type-size(26px, 40px, $montserrat-bold, $primary, center);
+    }
+    &__title {
+        margin-top: 15px;
+        @include fluid-type-size(10px, 14px, $montserrat-bold, $dark, center);
+    }
+}

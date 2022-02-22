@@ -1,0 +1,14 @@
+<app-preluader></app-preluader>
+
+<app-header (selectedMenu)="gotoItem($event)" #home [contacts]="configs.other" [changedMenu]="changedMenu"></app-header>
+<section class="main">
+
+    <app-slider [slider] = "configs.slider" #slider  (selectedMenu)="gotoItem($event)"></app-slider>
+    <app-about-us #aboutUs [about] = "configs.about"></app-about-us>
+    <app-counter [counter] = "configs.counter"></app-counter>
+    <app-services #services  [services] = "configs.services"></app-services>
+    <app-products #products [products] = "configs.products"></app-products>
+    <app-partners #partners [partners] = "configs.partners"></app-partners>
+    <app-contacts #contacts [contacts] = "configs.contacts"></app-contacts>
+    <app-footer></app-footer>
+</section>

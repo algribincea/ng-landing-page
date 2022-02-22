@@ -1,0 +1,33 @@
+.main {
+    padding-top: 120px;
+    @media (max-width: 900px) {
+        padding-top: 80px;
+    }
+}
+
+app-about-us,
+app-services,
+app-products,
+app-partners,
+app-contacts, 
+app-slider {
+    display: block;
+}
+
+
+app-preluader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100000;
+    animation: show 0s ease-in 3s forwards;
+    animation-fill-mode: forwards;
+}
+@keyframes show{
+  
+    to {
+        width:0;
+        height:0;
+        overflow:hidden;
+    }
+}

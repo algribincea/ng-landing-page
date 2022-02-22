@@ -1,0 +1,237 @@
+@import "./../../assets/scss/theme.scss";
+@import "./../../assets/scss/mixins.scss";
+
+section {
+  // max-height: calc(100vh - 120px);
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: 1024px) {
+    max-height: 60vh;
+  }
+}
+
+.slider {
+  max-width: 100%;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+
+  &__item {
+    position: relative;
+    animation-name: slide;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    display: none;
+
+    &--content {
+      max-width: 50%;
+      width: 100%;
+
+      //   background-color: rgba($dark, 0.7);
+
+      padding: 50px 10px 50px 90px;
+      box-sizing: border-box;
+      margin: auto 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-end;
+
+      .btn {
+        margin-top: 20px;
+        max-width: 200px;
+        width: 100%;
+        color: $dark;
+      }
+
+      //   @include mq(phablet, max) {
+      //     padding: 20px;
+      //   }
+    }
+
+    &--caption {
+      @include fluid-type-size(20px, 36px, $montserrat-medium, $dark, left);
+      max-width: 670px;
+      width: 100%;
+      z-index: 2;
+    }
+
+    &--text {
+      @include fluid-type-size(12px, 24px, $roboto-regular, $dark, left);
+      margin-top: 30px;
+      max-width: 670px;
+      width: 100%;
+      z-index: 2;
+      //   max-height: 65px;
+      //   overflow: hidden;
+      // @media (max-width: 634px) {
+      //     max-height: 53px;
+      // }
+      // @include mq(phablet, max) {
+      //   margin-top: 15px;
+      // }
+    }
+
+    @media (max-width: 1024px) {
+      max-height: 60vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &--content {
+        max-width: 60%;
+      }
+    }
+
+    @media (max-width: 900px) {
+      // min-height: 60vh;
+      height: 450px;
+      min-height: auto;
+      max-width: 100%;
+      width: 100%;
+      &--content {
+        max-width: 90%;
+        margin: 0 auto;
+        padding: 50px 0px;
+      }
+      &--text {
+        max-width: 100%;
+      }
+
+      &--caption {
+        max-width: 100%;
+      }
+    }
+    @include mq(tablet-small, max) {
+      &--content {
+        padding: 30px 0px 90px;
+      }
+    }
+    @media (max-width: 560px) {
+      // max-height: 450px;
+      // min-height: auto;
+    }
+  }
+  &__btn {
+    position: absolute;
+    z-index: 2;
+    height: 65px;
+    width: 65px;
+    top: calc(50% - 35px);
+    background-color: transparent;
+    border: none;
+    color: $dark;
+    &:nth-child(1) {
+      left: 20px;
+    }
+    &:nth-child(2) {
+      right: 20px;
+    }
+
+    &:hover {
+      border: 1px solid $primary;
+      color: $primary;
+    }
+
+    @media (max-width: 1024px) {
+      // top: calc(60vh / 2 - 65px);
+      display: none;
+    }
+  }
+
+  &__image {
+    max-width: 50%;
+    width: 100%;
+    @include figure(50%, calc(100vh - 80px));
+    @media (min-width: 1921px) {
+      height: auto;
+      max-height: 960px;
+    }
+    img {
+      max-width: 100%;
+      object-fit: cover;
+    }
+    @media (max-width: 1024px) {
+      max-width: 40%;
+    }
+    @media (max-width: 900px) {
+      display: none;
+    }
+  }
+
+  @media (max-width: 900px) {
+    // min-height: 60vh;
+  }
+
+  @media (max-width: 560px) {
+    // height: auto;
+    // min-height: auto;
+    // max-height: 450px;
+  }
+}
+
+@keyframes slide {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.slider__paralax {
+  position: absolute;
+  z-index: 1;
+  left: 70px;
+  top: 280px;
+  max-width: 100%;
+  // width: 100%;
+  object-fit: contain;
+  @media (max-width: 1024px) {
+    width: 250px;
+    bottom: 10px;
+    left: 40px;
+    top: auto;
+  }
+}
+
+.down {
+  bottom: 50px;
+  left: 50%;
+  font-size: 25px;
+  font-weight: bold;
+  top: auto;
+  @media (max-width: 900px) {
+    display: none;
+  }
+}
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 3px;
+  background-color: $light;
+  border: 1px solid $dark;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.wrapper-dots {
+  position: absolute;
+  bottom: 70px;
+  left: 200px;
+
+  @media (max-width: 1024px) {
+    left: auto;
+    bottom: 30px;
+    // position: relative;
+  }
+}
+
+.active-dot {
+  background-color: $primary;
+}

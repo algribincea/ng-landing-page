@@ -1,0 +1,74 @@
+@import "./../../assets/scss/theme.scss";
+@import "./../../assets/scss/mixins.scss";
+
+section {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: flex-end;
+    max-width: 1920px;
+    width: 100%;
+    margin: 0 auto;
+    @media (max-width: 900px) {
+        background-color: $medium;
+    }
+}
+
+.title {
+    text-align: left;
+}
+
+.product {
+    &__img {
+        @include figure(945px, 850px);
+        background-color: $medium;
+        img {
+            max-width: 100%;
+        }
+
+        @include mq(desktop, max) {
+            height: auto;
+        }
+
+        @media (max-width: 900px) {
+            display: none;
+        }
+    }
+
+    &__content {
+        max-width: 700px;
+        width: 100%;
+        padding: 60px 30px 60px;
+        @media (max-width: 900px) {
+            max-width: 90%;
+            margin: 0 auto;
+            background-color: $medium;
+            padding: 60px 0;
+        }
+        
+        @include mq(tablet-small, max) {
+            padding: 40px 0;
+        }
+
+    }
+}
+
+.tab {
+    &__content {
+        padding: 0;
+        @media (max-width: 900px) {
+            max-width: 100%;
+        }
+    }
+}
+
+.tabs {
+    &__item {
+        &:first-child {
+            margin-left: 0;
+        }
+        @media (max-width: 425px) {
+            margin: 0 5px;
+        }
+    }
+}

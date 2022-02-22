@@ -1,0 +1,16 @@
+<section  #showCounter>
+    <div class="container"  *ngIf="counter">
+        <h2 class="title" language="facts">Fapte și cifre</h2>
+        <div class="wrapper-counter">
+            <div class="counter" *ngFor="let item of counter" >
+                <div class="counter__number"> {{ item.nr }}</div>
+                <p class="counter__title">{{ item.title[_lng.langCurrent] }}</p>
+            </div>
+            
+            <!-- <div class="counter">
+                <div class="counter__number">1250</div>
+                <p class="counter__title">Clienți mulțumiți</p>
+            </div> -->
+        </div>
+    </div>
+</section>

@@ -1,0 +1,29 @@
+<section *ngIf="slider && slider.length>0">
+    <!-- (swipeleft)="plusDivs(+1)" (swiperight)="plusDivs(-1)" -->
+    <div class="slider" (swipeleft)="plusDivs(+1)" (swiperight)="plusDivs(-1)">
+        <ng-container *ngFor="let item of slider">
+            <div class="slider__item" #slide>
+                <div class="slider__item--content">
+                    <h2 class="slider__item--caption" *ngIf="item.title">{{ item.title[_lng.langCurrent] }}</h2>
+                    <p class="slider__item--text" [innerHTML]="item.text[_lng.langCurrent] "></p>
+                </div>
+                <figure class="slider__image">
+                    <img loading="lazy" [src]="item.image && item.image.url && config.returnImg(item.image.url)" [alt]="item.image && item.image.alt && item.image.alt[_lng.langCurrent]">
+                </figure>
+            </div>
+        </ng-container>
+
+        <div class="wrapper slider__btns">
+            <button id="back" class="slider__btn btn _icon flaticon-left" (click)="plusDivs(-1)" aria-label="prev"></button>
+            <button id="next" class="slider__btn btn _icon flaticon-next" (click)="plusDivs(+1)" aria-label="next"></button>
+        </div>
+        <button class="slider__btn btn _icon flaticon-next flaticon-down-arrow-2 down" (click)="navigate()" aria-label="go-to-next-section"></button>
+        <div class="wrapper-dots">
+            <ng-container *ngFor="let item of slider; let i=index">
+                <span class="dot " [ngClass]="{'active-dot': slideIndex == i+1}" (click)="currentSlide(i+1)" ></span>
+            </ng-container>
+            
+        </div>
+    </div>
+    <img loading="lazy" src="assets/images/Patrat.png" alt="" class="slider__paralax" appParallax [ratio]="0.3">
+</section>

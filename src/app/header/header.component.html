@@ -1,0 +1,76 @@
+
+    <header>
+        <div class="container header-contacts" *ngIf="contacts">
+            <div class="wrapper header-contacts__item" >
+                <a *ngIf="contacts.phone" href="tel: {{contacts.phone}}" class="flaticon-call">{{ contacts.phone }}</a>
+                <a *ngIf="contacts.email" href="mailto: {{ contacts.email }}" class="flaticon-envelope">{{ contacts.email }}</a>
+            </div>
+            <div class="wrapper header-contacts__item">
+                <a *ngIf="contacts.facebook" class="flaticon-facebook-1 socials__item facebook" target="_blank" [href]="contacts.facebook" aria-label="facebook" rel="noopener"></a>
+                <a *ngIf="contacts.instagram" class="flaticon-instagram-1 socials__item instagram" target="_blank" [href]="contacts.instagram" aria-label="instagram" rel="noopener"></a>
+            </div>
+        </div>
+        <nav>
+            <div class="container">
+
+                <a (click)="navigateTo('home')" class="logo">vacum-nord</a>
+
+                <a class="bottom-nav__item" (click)="openMenu = !openMenu">
+                    <div class="menu-icon" [ngClass]="{'is-open': openMenu}">
+                        <div class="navicon"></div>
+                    </div>
+                </a>
+                <div class="wrapper-menu"  [ngClass]="{'active-menu': openMenu}">
+
+                    <ul class="menu wrapper">
+                        <li class="menu__item close-item"><a (click)="openMenu = !openMenu" class="flaticon-close"></a></li>
+                        <li class="menu__item "><a (click)="navigateTo('home')" [ngClass]="{'active': selectedMenuEl == 'home'}" language="home">Acasă</a></li>
+                        <li class="menu__item"><a (click)="navigateTo('about-us')" [ngClass]="{'active': selectedMenuEl == 'about-us'}" language="about">Despre noi</a></li>
+                        <li class="menu__item"><a (click)="navigateTo('services')" [ngClass]="{'active': selectedMenuEl == 'services'}" language="services">Servicii</a></li>
+                        <li class="menu__item"><a (click)="navigateTo('products')" [ngClass]="{'active': selectedMenuEl == 'products'}" language="products">Produse</a></li>
+                        <li class="menu__item"><a (click)="navigateTo('partners')" [ngClass]="{'active': selectedMenuEl == 'partners'}" language="partners">Parteneri</a></li>
+                        <li class="menu__item"><a (click)="navigateTo('contacts')" [ngClass]="{'active': selectedMenuEl == 'contacts'}" language="contacts">Contacte</a></li>
+                        <li class="menu__item language">
+                            <a (click)="showLanguage()" class="language__link"> 
+                                <span *ngIf=" _lng.langCurrent == 'ro'">RO</span>  
+                                <span *ngIf=" _lng.langCurrent == 'ru'">RU</span>  
+                                <span *ngIf=" _lng.langCurrent == 'en'">EN</span>  
+                            </a>
+                            <div class="language__select" *ngIf="openLanguage">
+                                <p class="language__select--title"><i class="flaticon-translation"></i> <span>Limba</span>
+                                </p>
+                                <ul class="language__select--elements">
+                                    <li><a (click)="changeLanguage('ro')" [ngClass]="{'active': _lng.langCurrent == 'ro'}" class="active">Română</a></li>
+                                    <li><a (click)="changeLanguage('ru')" [ngClass]="{'active': _lng.langCurrent == 'ru'}" >Rusă</a></li>
+                                    <li><a (click)="changeLanguage('en')" [ngClass]="{'active': _lng.langCurrent == 'en'}" >Engleză</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        
+                     
+                       
+                    </ul>
+
+                    <ul class="menu wrapper bottom__item">
+                        <li class="menu__item header-contacts__item">
+                            <a *ngIf="contacts && contacts.facebook" class="flaticon-facebook-1 socials__item facebook" target="_blank" [href]="contacts.facebook" aria-label="facebook" rel="noopener"></a>
+                            <a *ngIf="contacts && contacts.instagram" class="flaticon-instagram-1 socials__item instagram" target="_blank" [href]="contacts.instagram" aria-label="instagram" rel="noopener"></a>
+                        </li>
+                        <li class="menu__item header-contacts__item">
+                            <a *ngIf="contacts && contacts.phone" href="tel: {{contacts.phone}}" class="flaticon-call">{{ contacts.phone }}</a>
+                        </li>
+                        <li class="menu__item header-contacts__item">
+                            <a *ngIf="contacts && contacts.email" href="mailto: {{ contacts.email }}" class="flaticon-envelope">{{ contacts.email }}</a>
+                        </li>
+                        
+                    </ul>
+
+                    
+                </div>
+                
+
+
+            </div>
+        </nav>
+    </header>
+    <div class="mask" [ngClass]="{'active-mask': openMenu}" (click)="openMenu = !openMenu"></div>
